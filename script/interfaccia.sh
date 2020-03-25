@@ -10,7 +10,6 @@ usage()
     echo "Modifica uscita audio/video"
     echo ""
 	echo -e "\t-h --help"
-    echo -e "\t-VGA : attiva l'uscita VGA"
 	echo -e "\t-HDMI : attiva l'uscita HDMI"
 	echo -e "\t-SCART -JAMMA : attiva l'uscita SCART/JAMMA"
 	echo -e "\t-JSON : attiva il driver Joystick"
@@ -28,28 +27,6 @@ while [ "$1" != "" ]; do
         -h | --help)
             usage
             exit
-            ;;
-        -VGA)
-			printf "\033[1;31m Attivo la VGA per la JammaPi \033[0m\n"
-			sudo perl -p -i -e 's/#dtoverlay=pwm-2chan,pin=18,func=2,pin2=19,func2=2/dtoverlay=pwm-2chan,pin=18,func=2,pin2=19,func2=2/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dtoverlay=audremap,pins_18_19/dtoverlay=audremap,pins_18_19/g' /boot/config.txt
-			sudo perl -p -i -e 's/#disable_audio_dither=1/disable_audio_dither=1/g' /boot/config.txt
-			sudo perl -p -i -e 's/#audio_pwm_mode=2/audio_pwm_mode=2/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dtoverlay=vga666-6/dtoverlay=vga666-6/g' /boot/config.txt
-			sudo perl -p -i -e 's/#enable_dpi_lcd=1/enable_dpi_lcd=1/g' /boot/config.txt
-			sudo perl -p -i -e 's/#display_default_lcd=1/display_default_lcd=1/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dpi_output_format=6/dpi_output_format=6/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dpi_group=2/dpi_group=2/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dpi_mode=87/dpi_mode=9/g' /boot/config.txt
-			sudo perl -p -i -e 's/#dpi_mode=9/dpi_mode=9/g' /boot/config.txt
-			sudo perl -p -i -e 's/dpi_mode=87/dpi_mode=9/g' /boot/config.txt
-			sudo perl -p -i -e 's/hdmi_timings=/#hdmi_timings=/g' /boot/config.txt
-			bash /home/pi/JammaPi/script/pixelperfect.sh -runc-off
-			bash /home/pi/JammaPi/script/pixelperfect.sh -off
-			sudo perl -p -i -e 's/#CRT/#VGA/g' /boot/config.txt
-    			sudo perl -p -i -e 's/#HDMI/#VGA/g' /boot/config.txt
-			printf "\033[0;32m !!!SPOSTARE I 2 DIP SWITCH SU OFF!!! \033[0m\n"
-			sleep 5
             ;;
         -HDMI)
 			printf "\033[1;31m Attivo l'HDMI \033[0m\n"
