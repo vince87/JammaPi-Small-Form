@@ -7,8 +7,7 @@ TITLE="JammaPi switch video"
 MENU="Scegli una delle opzioni:"
 
 OPTIONS=(1 "Switch JAMMA/SCART"
-         2 "Switch VGA"
-         3 "Switch HDMI")
+         2 "Switch HDMI")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -40,25 +39,6 @@ case $response in
             ;;
 
         2)
-            dialog --title "JammaPi VGA" \
-            --backtitle "JammaPi Menù" \
-            --yesno "Vuoi attivare l'uscita VGA? \n Al termine sarà riavviato il sistema!" 7 60
-            response=$?
-case $response in
-               0)
-                  bash ~/JammaPi/script/interfaccia.sh -VGA
-                  bash ~/JammaPi/script/interfaccia.sh -JAMMA-AUD
-                  bash ~/JammaPi/script/interfaccia.sh -AUD-MONO
-                  echo "Riavvio in corso!"
-                  sudo reboot
-               ;;
-               1)
-                  bash ~/JammaPi/script/switchvideo.sh
-               ;;
-            esac
-            ;;
-
-        3)
             dialog --title "JammaPi HDMI" \
             --backtitle "JammaPi Menù" \
             --yesno "Vuoi attivare l'uscita HDMI? \n Al termine sarà riavviato il sistema!" 7 60
