@@ -1,6 +1,6 @@
 # JammaPi !!!Aggiunto pieno supporto a Raspberry Pi 4!!!
 
-![alt text](https://www.jammapi.it/wp-content/uploads/2019/11/jammapi_v4-300x255.jpg)
+![alt text](https://www.jammapi.it/wp-content/uploads/2020/03/JammaPi-Small-Form.jpg)
 
 sito di riferimento: https://www.jammapi.it/
 
