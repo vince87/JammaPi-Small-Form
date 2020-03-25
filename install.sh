@@ -18,7 +18,7 @@ lsmod | grep 'joypi' > /dev/null 2>&1
   else
   	sudo apt-get install --reinstall -y raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
   fi
-git clone https://github.com/vince87/JammaPi.git
+git clone https://github.com/vince87/JammaPi-Small-Form.git
 cd ~/JammaPi
 git reset --hard origin/master
 git pull
@@ -63,18 +63,6 @@ chmod +x install.sh
 	fi
 	sleep 2
 
-##install jammapi led driver
-	printf "\033[1;31m Installo led \033[0m\n"
-	sudo grep 'act-led,gpio=27' /boot/config.txt > /dev/null 2>&1
-	if [ $? -eq 0 ] ; then
-	echo "Config.txt già modificato!"
-	else
-	sudo sh -c "echo 'dtoverlay=act-led,gpio=27,activelow=on' >> /boot/config.txt"
-	sudo sh -c "echo 'gpio=26=op,dl' >> /boot/config.txt"
-	echo "Modulo impostato!"
-	fi
-	sleep 2
-
 ##install jammapi joystick driver
 	
 	printf "\033[1;31m Installo driver Joystick \033[0m\n"
@@ -101,12 +89,9 @@ chmod +x install.sh
 	chmod u+x ~/JammaPi/script/interfaccia.sh
 	chmod u+x ~/JammaPi/script/jammapi.sh
 	sudo ln -s /home/pi/JammaPi/services/jammapi.service /etc/systemd/system/jammapi.service
-	sudo ln -s /home/pi/JammaPi/services/jammapi_joystick.service /etc/systemd/system/jammapi_joystick.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable jammapi.service
 	sudo systemctl start jammapi.service &
-	sudo systemctl enable jammapi_joystick.service
-	sudo systemctl start jammapi_joystick.service &
 	echo "Script impostato!"
 	sleep 2
 
@@ -119,16 +104,6 @@ chmod +x install.sh
   
   ##Add Emulationstation basic themes...
 	printf "\033[1;31m Installo temi Emulationstation \033[0m\n"
-	#cd ~/JammaPi/themes
-	#git clone https://github.com/PietDAmore/240p-Theme.git
-	#cd 240p-Theme/
- 	#sudo cp -r "240p Bubblegum"/ /etc/emulationstation/themes/
-	#sudo cp -r "240p Honey"/ /etc/emulationstation/themes/
-	#cd 240p-overlays-v1/
-	#cd ~/JammaPi/themes
-	#git clone https://github.com/anthonycaccese/es-theme-crt.git
-	#sudo cp -r es-theme-crt/ /etc/emulationstation/themes/
-	#cd ~/JammaPi/themes
 	cd /etc/emulationstation/themes/
 	sudo git clone https://github.com/ehettervik/es-theme-pixel.git
 	sleep 2
