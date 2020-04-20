@@ -8,6 +8,7 @@ MENU="Scegliere un opzione:"
 
 OPTIONS=(1 "Aggiorna Script"
          2 "Switch JAMMA 15Khz/HDMI"
+         3 "Menù Audio"
          99 "Lancia script richiesto")
 
 CHOICE=$(dialog --clear \
@@ -22,6 +23,7 @@ clear
 case $CHOICE in
         1) bash ~/JammaPi/script/updatescript.sh ;;
         2) bash ~/JammaPi/script/switchvideo.sh ;;
+        2) bash ~/JammaPi/script/audio.sh ;;
         99)
         if test -f "/boot/personalizzazione.sh"; then
           echo "$FILE esite!"
