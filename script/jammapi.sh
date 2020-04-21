@@ -41,7 +41,7 @@ sudo grep '#HDMI' /boot/config.txt > /dev/null 2>&1
     current=2
   fi
 
-if [ $current != 0 ]; then
+if [ $current != 0 && current = 99]; then
   bash /home/pi/JammaPi-Small-Form/script/interfaccia.sh -JAMMA
   printf "\033[0;32m !!!SWITCH COMPLETATO!!! \033[0m\n"
   printf "\033[0;32m     !!!RIAVVIO IN CORSO!!! \033[0m\n"
@@ -49,7 +49,7 @@ if [ $current != 0 ]; then
   sudo reboot
 fi
 
-if [ $current != 2 ]; then
+if [ $current != 2 && current = 99]; then
   bash /home/pi/JammaPi-Small-Form/script/interfaccia.sh -HDMI
   printf "\033[0;32m !!!SWITCH COMPLETATO!!! \033[0m\n"
   printf "\033[0;32m     !!!RIAVVIO IN CORSO!!! \033[0m\n"
