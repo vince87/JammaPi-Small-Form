@@ -21,9 +21,9 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1) bash ~/JammaPi/script/updatescript.sh ;;
-        2) bash ~/JammaPi/script/switchvideo.sh ;;
-        2) bash ~/JammaPi/script/audio.sh ;;
+        1) bash ~/JammaPi-Small-Form/script/updatescript.sh ;;
+        2) bash ~/JammaPi-Small-Form/script/switchvideo.sh ;;
+        2) bash ~/JammaPi-Small-Form/script/audio.sh ;;
         99)
         if test -f "/boot/personalizzazione.sh"; then
           echo "$FILE esite!"
@@ -31,7 +31,7 @@ case $CHOICE in
           sleep 2
         else
           dialog --title "Hello" --msgbox 'File mancante!' 6 20
-          bash ~/JammaPi/script/menu.sh
+          bash ~/JammaPi-Small-Form/script/menu.sh
         fi
         ;;
 esac
