@@ -12,8 +12,6 @@ usage()
 	echo -e "\t-h --help"
 	echo -e "\t-HDMI : attiva l'uscita HDMI"
 	echo -e "\t-SCART -JAMMA : attiva l'uscita SCART/JAMMA"
-	echo -e "\t-JSON : attiva il driver Joystick"
-	echo -e "\t-JSOFF : disattiva il driver Joystick"
 	echo -e "\t-HDMI-AUD : attiva l'audio su HDMI"
 	echo -e "\t-JAMMA-AUD : attiva l'audio su JAMMA/JACK"
 	echo -e "\t-AUD-MONO : imposta l'audio MONO"
@@ -65,31 +63,6 @@ while [ "$1" != "" ]; do
 			bash /home/pi/JammaPi-Small-Form/script/pixelperfect.sh -on
     			sudo perl -p -i -e 's/#HDMI/#CRT/g' /boot/config.txt
 			printf "\033[0;32m !!!SPOSTARE I 2 DIP SWITCH SU ON!!! \033[0m\n"
-			sleep 5
-            ;;
-		-JSON)
-			printf "\033[1;31m Attivo il driver Joystick \033[0m\n"
- 			sudo modprobe joypi
-  			lsmod | grep 'joypi' > /dev/null 2>&1
- 			if [ $? -eq 0 ] ; then
-  				echo "Driver Attivo!"
-  			else
-  			cd ~/JammaPi-Small-Form/joypi/
-  			make clean
-			make
-			sudo make install
-			sudo insmod joypi.ko
-			modprobe joypi
-  fi
-            		sudo ln -s /home/pi/JammaPi-Small-Form/services/jammapi_joystick.service /etc/systemd/system/jammapi_joystick.service
-			sudo systemctl enable jammapi_joystick.service
-			sudo systemctl start jammapi_joystick.service
-			sleep 5
-            ;;
-		-JSOFF)
-			printf "\033[1;31m DIsattivo il driver Joystick \033[0m\n"
-			sudo modprobe -rf joypi
-			sudo systemctl disable jammapi_joystick.service
 			sleep 5
             ;;
 	    	-HDMI-AUD)
