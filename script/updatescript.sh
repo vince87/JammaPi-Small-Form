@@ -5,7 +5,7 @@ dialog --title "JammaPi aggiorna script" \
             response=$?
 case $response in
                0)
-                  cd ~/JammaPi
+                  cd ~/JammaPi-Small-Form
                   git reset --hard origin/master
                   git pull
                   wget -O - https://github.com/vince87/JammaPi-Small-Form/raw/master/install.sh | bash
