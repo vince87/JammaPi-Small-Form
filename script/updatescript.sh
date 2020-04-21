@@ -11,7 +11,7 @@ case $response in
                   wget -O - https://github.com/vince87/JammaPi-Small-Form/raw/master/install.sh | bash
                ;;
                1)
-                  bash ~/JammaPi/script/menu.sh
+                  bash ~/JammaPi-Small-Form/script/menu.sh
                ;;
             esac
 
