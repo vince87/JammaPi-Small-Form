@@ -28,10 +28,10 @@ case $CHOICE in
             response=$?
 case $response in
                0)
-                  bash ~/JammaPi/script/interfaccia.sh -HDMI-AUD
+                  bash ~/JammaPi-Small-Form/script/interfaccia.sh -HDMI-AUD
                ;;
                1)
-                  bash ~/JammaPi/script/audio.sh
+                  bash ~/JammaPi-Small-Form/script/audio.sh
                ;;
             esac
             ;;
@@ -43,10 +43,10 @@ case $response in
             response=$?
 case $response in
                0)
-                  bash ~/JammaPi/script/interfaccia.sh -JAMMA-AUD
+                  bash ~/JammaPi-Small-Form/script/interfaccia.sh -JAMMA-AUD
                ;;
                1)
-		  bash ~/JammaPi/script/audio.sh
+		  bash ~/JammaPi-Small-Form/script/audio.sh
                ;;
             esac
             ;;
@@ -72,13 +72,13 @@ case $response in
             clear
             case $CHOICE in
             1)
-			bash ~/JammaPi/script/interfaccia.sh -AUD-MONO
-			bash ~/JammaPi/script/audio.sh
+			bash ~/JammaPi-Small-Form/script/interfaccia.sh -AUD-MONO
+			bash ~/JammaPi-Small-Form/script/audio.sh
              ;;
 
             2)
-			bash ~/JammaPi/script/interfaccia.sh -AUD-STEREO
-			bash ~/JammaPi/script/audio.sh
+			bash ~/JammaPi-Small-Form/script/interfaccia.sh -AUD-STEREO
+			bash ~/JammaPi-Small-Form/script/audio.sh
              ;;
 
             esac
@@ -89,4 +89,4 @@ case $response in
 
 esac
 
-bash ~/JammaPi/script/menu.sh
+bash ~/JammaPi-Small-Form/script/menu.sh
