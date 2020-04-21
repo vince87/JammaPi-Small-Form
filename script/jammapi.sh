@@ -11,7 +11,7 @@
   if [ $? -eq 0 ] ; then
   	echo "Modulo abilitato!"
   else
-  	cd ~/JammaPi/joypi/
+  	cd ~/JammaPi-Small-Form/joypi/
 	make
 	sudo make install
 	sudo insmod joypi.ko
@@ -42,7 +42,7 @@ sudo grep '#HDMI' /boot/config.txt > /dev/null 2>&1
   fi
 
 if [ $current != 0 ]; then
-  bash /home/pi/JammaPi/script/interfaccia.sh -JAMMA
+  bash /home/pi/JammaPi-Small-Form/script/interfaccia.sh -JAMMA
   printf "\033[0;32m !!!SWITCH COMPLETATO!!! \033[0m\n"
   printf "\033[0;32m     !!!RIAVVIO IN CORSO!!! \033[0m\n"
   sleep 5
@@ -50,7 +50,7 @@ if [ $current != 0 ]; then
 fi
 
 if [ $current != 2 ]; then
-  bash /home/pi/JammaPi/script/interfaccia.sh -HDMI
+  bash /home/pi/JammaPi-Small-Form/script/interfaccia.sh -HDMI
   printf "\033[0;32m !!!SWITCH COMPLETATO!!! \033[0m\n"
   printf "\033[0;32m     !!!RIAVVIO IN CORSO!!! \033[0m\n"
   sleep 5
