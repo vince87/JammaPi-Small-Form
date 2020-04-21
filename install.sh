@@ -19,13 +19,13 @@ lsmod | grep 'joypi' > /dev/null 2>&1
   	sudo apt-get install --reinstall -y raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
   fi
 git clone https://github.com/vince87/JammaPi-Small-Form.git
-cd ~/JammaPi
+cd ~/JammaPi-Small-Form
 git reset --hard origin/master
 git pull
 chmod +x install.sh
 
 ##install jammapi overlay
-	cd ~/JammaPi
+	cd ~/JammaPi-Small-Form
 	printf "\033[1;31m Modifico il config.txt per la JammaPi \033[0m\n"
 	sudo grep 'dtparam=i2c_vc=on' /boot/config.txt > /dev/null 2>&1
 	if [ $? -eq 0 ] ; then
@@ -37,7 +37,7 @@ chmod +x install.sh
 	sudo rm /boot/dt-blob.bin
 	sudo cp dt-blob.bin /boot/dt-blob.bin
 	sudo rm /etc/asound.conf
-	sudo ln -s /home/pi/JammaPi/script/asound.conf /etc/asound.conf
+	sudo ln -s /home/pi/JammaPi-Small-Form/script/asound.conf /etc/asound.conf
 	sleep 2
 
   ##Modify Config.txt to Default
@@ -71,24 +71,24 @@ chmod +x install.sh
         echo "Joystick già installato!"
         else
 	sudo sh -c "echo 'i2c-dev' >> /etc/modules"
-	cd ~/JammaPi/joypi/
+	cd ~/JammaPi-Small-Form/joypi/
 	make clean
 	make
 	sudo make install
 	sudo insmod joypi.ko
 	echo "Modulo impostato!"
-	ln -s /home/pi/JammaPi/joypi/JoyPi\ Joystick\ 0.cfg /opt/retropie/configs/all/retroarch-joypads/JoyPi\ Joystick\ 0.cfg
-	ln -s /home/pi/JammaPi/joypi/JoyPi\ Joystick\ 1.cfg /opt/retropie/configs/all/retroarch-joypads/JoyPi\ Joystick\ 1.cfg
+	ln -s /home/pi/JammaPi-Small-Form/joypi/JoyPi\ Joystick\ 0.cfg /opt/retropie/configs/all/retroarch-joypads/JoyPi\ Joystick\ 0.cfg
+	ln -s /home/pi/JammaPi-Small-Form/joypi/JoyPi\ Joystick\ 1.cfg /opt/retropie/configs/all/retroarch-joypads/JoyPi\ Joystick\ 1.cfg
 	sudo mv ~/.emulationstation/es_input.cfg ~/.emulationstation/es_input.bak
-	ln -s /home/pi/JammaPi/joypi/es_input.cfg /opt/retropie/configs/all/emulationstation/es_input.cfg
+	ln -s /home/pi/JammaPi-Small-Form/joypi/es_input.cfg /opt/retropie/configs/all/emulationstation/es_input.cfg
         fi
 	sleep 2
 	
 ##install jammapi service and script script
-	chmod u+x ~/JammaPi/script/pixelperfect.sh
-	chmod u+x ~/JammaPi/script/interfaccia.sh
-	chmod u+x ~/JammaPi/script/jammapi.sh
-	sudo ln -s /home/pi/JammaPi/services/jammapi.service /etc/systemd/system/jammapi.service
+	chmod u+x ~/JammaPi-Small-Form/script/pixelperfect.sh
+	chmod u+x ~/JammaPi-Small-Form/script/interfaccia.sh
+	chmod u+x ~/JammaPi-Small-Form/script/jammapi.sh
+	sudo ln -s /home/pi/JammaPi-Small-Form/services/jammapi.service /etc/systemd/system/jammapi.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable jammapi.service
 	sudo systemctl start jammapi.service &
@@ -99,7 +99,7 @@ chmod +x install.sh
 	
 ##install jammapi menu script
 	printf "\033[1;31m Installo menu x RetroPie \033[0m\n"
-	ln -s /home/pi/JammaPi/script/menu.sh '/home/pi/RetroPie/retropiemenu/JammaPi.sh'
+	ln -s /home/pi/JammaPi-Small-Form/script/menu.sh '/home/pi/RetroPie/retropiemenu/JammaPi.sh'
 	sleep 2
   
   ##Add Emulationstation basic themes...
@@ -110,10 +110,11 @@ chmod +x install.sh
 
   ##install retropie resolution switch
 		printf "\033[1;31m installo script risoluzioni 15khz... \033[0m\n"
-		ln -s /home/pi/JammaPi/script/runcommand-onend.sh /opt/retropie/configs/all/runcommand-onend.sh
-		ln -s /home/pi/JammaPi/script/runcommand-onstart.sh /opt/retropie/configs/all/runcommand-onstart.sh
-		ln -s /home/pi/JammaPi/script/vertical_list.txt /opt/retropie/configs/all/vertical_list.txt
-		ln -s /home/pi/JammaPi/script/exceptions_list.txt /opt/retropie/configs/all/exceptions_list.txt
+		ln -s /home/pi/JammaPi-Small-Form/script/runcommand-onend.sh /opt/retropie/configs/all/runcommand-onend.sh
+		ln -s /home/pi/JammaPi-Small-Form/script/runcommand-onstart.sh /opt/retropie/configs/all/runcommand-onstart.sh
+		ln -s /home/pi/JammaPi-Small-Form/script/vertical_list.txt /opt/retropie/configs/all/vertical_list.txt
+		ln -s /home/pi/JammaPi-Small-Form/script/exceptions_list.txt /opt/retropie/configs/all/exceptions_list.txt
+		
 		sudo grep 'crt_switch_resolution' /etc/fstab > /dev/null 2>&1
 		if [ $? -eq 0 ] ; then
 			echo "Già modificato!"
@@ -141,7 +142,7 @@ chmod +x install.sh
 
 		
   ##Choice of video output
-		bash ~/JammaPi/script/switchvideo.sh 1
+		bash ~/JammaPi-Small-Form/script/switchvideo.sh 1
 		
     		printf "\033[0;32m !!!INSTALLAZIONE COMPLETATA!!! \033[0m\n"
 		printf "\033[0;32m     !!!RIAVVIO IN CORSO!!! \033[0m\n"
