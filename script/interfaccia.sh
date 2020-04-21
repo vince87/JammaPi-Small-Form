@@ -41,8 +41,8 @@ while [ "$1" != "" ]; do
 			sudo perl -p -i -e 's/dpi_group=2/#dpi_group=2/g' /boot/config.txt
 			sudo perl -p -i -e 's/dpi_mode/#dpi_mode/g' /boot/config.txt
 			sudo perl -p -i -e 's/hdmi_timings=/#hdmi_timings=/g' /boot/config.txt
-			bash /home/pi/JammaPi/script/pixelperfect.sh -runc-off
-			bash /home/pi/JammaPi/script/pixelperfect.sh -off
+			bash /home/pi/JammaPi-Small-Form/script/pixelperfect.sh -runc-off
+			bash /home/pi/JammaPi-Small-Form/script/pixelperfect.sh -off
    			sudo perl -p -i -e 's/#CRT/#HDMI/g' /boot/config.txt
 			sleep 5
             ;;
@@ -61,8 +61,8 @@ while [ "$1" != "" ]; do
 			sudo perl -p -i -e 's/#dpi_mode=9/dpi_mode=87/g' /boot/config.txt
 			sudo perl -p -i -e 's/dpi_mode=9/dpi_mode=87/g' /boot/config.txt
 			sudo perl -p -i -e 's/#hdmi_timings=/hdmi_timings=/g' /boot/config.txt
-			bash /home/pi/JammaPi/script/pixelperfect.sh -runc-on
-			bash /home/pi/JammaPi/script/pixelperfect.sh -on
+			bash /home/pi/JammaPi-Small-Form/script/pixelperfect.sh -runc-on
+			bash /home/pi/JammaPi-Small-Form/script/pixelperfect.sh -on
     			sudo perl -p -i -e 's/#HDMI/#CRT/g' /boot/config.txt
 			printf "\033[0;32m !!!SPOSTARE I 2 DIP SWITCH SU ON!!! \033[0m\n"
 			sleep 5
@@ -74,14 +74,14 @@ while [ "$1" != "" ]; do
  			if [ $? -eq 0 ] ; then
   				echo "Driver Attivo!"
   			else
-  			cd ~/JammaPi/joypi/
+  			cd ~/JammaPi-Small-Form/joypi/
   			make clean
 			make
 			sudo make install
 			sudo insmod joypi.ko
 			modprobe joypi
   fi
-            		sudo ln -s /home/pi/JammaPi/services/jammapi_joystick.service /etc/systemd/system/jammapi_joystick.service
+            		sudo ln -s /home/pi/JammaPi-Small-Form/services/jammapi_joystick.service /etc/systemd/system/jammapi_joystick.service
 			sudo systemctl enable jammapi_joystick.service
 			sudo systemctl start jammapi_joystick.service
 			sleep 5
