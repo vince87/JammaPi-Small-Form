@@ -25,7 +25,7 @@ case $CHOICE in
         1) bash ~/JammaPi-Small-Form/script/updatescript.sh ;;
         2) bash ~/JammaPi-Small-Form/script/switchvideo.sh ;;
         3) bash ~/JammaPi-Small-Form/script/audio.sh ;;
-        4) bash ~/JammaPi/script/runcommandonoff.sh ;;
+        4) bash ~/JammaPi-Small-Form/script/runcommandonoff.sh ;;
         99)
         if test -f "/boot/personalizzazione.sh"; then
           echo "$FILE esite!"
