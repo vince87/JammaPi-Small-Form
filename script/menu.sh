@@ -9,6 +9,7 @@ MENU="Scegliere un opzione:"
 OPTIONS=(1 "Aggiorna Script"
          2 "Switch JAMMA 15Khz/HDMI"
          3 "Menù Audio"
+         4 "Abilita/Disabilita Runcommand RetroPie"
          99 "Lancia script richiesto")
 
 CHOICE=$(dialog --clear \
@@ -24,6 +25,7 @@ case $CHOICE in
         1) bash ~/JammaPi-Small-Form/script/updatescript.sh ;;
         2) bash ~/JammaPi-Small-Form/script/switchvideo.sh ;;
         3) bash ~/JammaPi-Small-Form/script/audio.sh ;;
+        4) bash ~/JammaPi/script/runcommandonoff.sh ;;
         99)
         if test -f "/boot/personalizzazione.sh"; then
           echo "$FILE esite!"
